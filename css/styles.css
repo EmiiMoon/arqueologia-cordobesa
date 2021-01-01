@@ -1,170 +1,237 @@
-/*El mapa se muestra dentro de un elemento "div", al cual se le ha asignado el ID "map".*/
-
-#map {
-    height: 85%;
-    width: 100%;
-}
-
-html,
-body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-}
-
-html {
-    box-sizing: border-box;
-    font-size: 62.5%;
-    /** 1rem = 10px **/
-}
-
-*,
-*:before,
-*:after {
-    box-sizing: inherit;
-}
-
-body {
-    font-family: 'Open Sans', sans-serif;
-    font-size: 1.6rem;
-    line-height: 2;
-}
-
-
-/** Globales **/
-
-.contenedor {
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-h1,
-h2,
-h3,
-h4 {
-    font-family: 'PT Sans', sans-serif;
-}
-
-h1 {
-    font-size: 4rem;
-}
-
-h2 {
-    font-size: 4rem;
-}
-
-h3 {
-    font-size: 3.2rem;
-}
-
-h4 {
-    font-size: 2.8rem;
-}
-
-img {
-    max-width: 100%;
-}
-
-
-/** Utilidades **/
-
-.centrar-texto {
-    text-align: center;
-}
-
-.no-margin {
-    margin: 0;
-}
-
-
-/** Header **/
-
-@media (min-width: 768px) {
-    .barra {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+    /*El mapa se muestra dentro de un elemento "div", al cual se le ha asignado el ID "map".*/
+    
+    #map {
+        height: 85%;
+        width: 100%;
     }
-}
-
-.site-header {
-    background-color: black;
-    background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../img/cordoba.jpg);
-    background-repeat: no-repeat;
-    background-position: 90% 70%;
-    background-size: cover;
-    height: 12rem;
-}
-
-.site-header a {
-    color: #ffffff;
-    text-decoration: none;
-}
-
-.site-header h1 {
-    text-align: center;
-    font-weight: 400;
-}
-
-.site-header h1 span {
-    font-weight: 700;
-}
-
-
-/** Navegación **/
-
-.navegacion a {
-    text-align: center;
-    display: block;
-    font-size: 1.8rem;
-}
-
-@media (min-width: 768px) {
-    .navegacion a {
-        display: inline;
-        margin-right: 2rem;
+    
+    html,
+    body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
     }
-    .navegacion a:last-of-type {
+    
+    html {
+        box-sizing: border-box;
+        font-size: 62.5%;
+        /** 1rem = 10px **/
+    }
+    
+    *,
+    *:before,
+    *:after {
+        box-sizing: inherit;
+    }
+    
+    body {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 1.6rem;
+        line-height: 2;
+    }
+    /** Globales **/
+    
+    .contenedor {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    
+    h1,
+    h2,
+    h3,
+    h4 {
+        font-family: 'PT Sans', sans-serif;
+    }
+    
+    h1 {
+        font-size: 4rem;
+    }
+    
+    h2 {
+        font-size: 4rem;
+    }
+    
+    h3 {
+        font-size: 3.2rem;
+    }
+    
+    h4 {
+        font-size: 2.8rem;
+    }
+    
+    img {
+        max-width: 100%;
+    }
+    /** Utilidades **/
+    
+    .centrar-texto {
+        text-align: center;
+    }
+    
+    .no-margin {
         margin: 0;
     }
-}
-
-
-/** Tabla **/
-
-table.greyGridTable {
-    border: 2px solid #FFFFFF;
-    width: 100%;
-    text-align: center;
-    border-collapse: collapse;
-}
-
-table.greyGridTable td,
-table.greyGridTable th {
-    border: 1px solid #FFFFFF;
-    padding: 3px 4px;
-}
-
-table.greyGridTable tbody td {
-    font-size: 13px;
-}
-
-table.greyGridTable td:nth-child(even) {
-    background: #EBEBEB;
-}
-
-table.greyGridTable thead {
-    background: #FFFFFF;
-    border-bottom: 4px solid #333333;
-}
-
-table.greyGridTable thead th {
-    font-size: 15px;
-    font-weight: bold;
-    color: #333333;
-    text-align: center;
-}
-
-table.greyGridTable tfoot td {
-    font-size: 14px;
-}
+    /** Header **/
+    
+    @media (min-width: 768px) {
+        .barra {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    }
+    
+    .site-header {
+        background-color: black;
+        background-image: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)), url(../img/cordoba.jpg);
+        background-repeat: no-repeat;
+        background-position: 90% 70%;
+        background-size: cover;
+        height: 15%;
+    }
+    
+    .site-header a {
+        color: #ffffff;
+        text-decoration: none;
+    }
+    
+    .site-header h1 {
+        text-align: center;
+        font-weight: 400;
+    }
+    
+    .site-header h1 span {
+        font-weight: 700;
+    }
+    /** Navegación **/
+    
+    .navegacion a {
+        text-align: center;
+        display: block;
+        font-size: 1.8rem;
+    }
+    
+    @media (min-width: 768px) {
+        .navegacion a {
+            display: inline;
+            margin-right: 2rem;
+        }
+        .navegacion a:last-of-type {
+            margin: 0;
+        }
+    }
+    /** Formulario **/
+    
+    .formulario-bg {
+        background-image: linear-gradient( rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3)), url(../img/arcos.jpg);
+        height: 20rem;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: 50% 50%;
+    }
+    
+    .formulario {
+        background-color: white;
+        margin: -5rem auto 0 auto;
+        width: 95%;
+        padding: 5rem;
+    }
+    
+    @media (min-width: 768px) {
+        .formulario {
+            width: 40%;
+        }
+    }
+    
+    .campo {
+        margin-bottom: 2rem;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .campo__label {
+        flex: 0 0 9rem;
+        text-align: right;
+        padding-right: 2rem;
+    }
+    
+    .campo__field {
+        flex: 0.25;
+        border: 1px solid #e1e1e1;
+    }
+    
+    .campo__field--textarea {
+        height: 20rem;
+    }
+    
+    .boton {
+        display: block;
+        font-family: 'PT Sans', sans-serif;
+        color: white;
+        text-align: center;
+        padding: 1rem 3rem;
+        font-size: 1.8rem;
+        text-transform: uppercase;
+        font-weight: 400;
+        margin-bottom: 2rem;
+        border: none;
+        padding: 5px 10px;
+    }
+    
+    @media (min-width: 768px) {
+        .boton {
+            display: inline-block;
+        }
+    }
+    
+    .boton:hover {
+        cursor: pointer;
+    }
+    
+    .boton--primario {
+        background-color: black;
+    }
+    
+    .boton--secundario {
+        margin-left: 1rem;
+        background-color: #784D3C;
+        text-decoration: none;
+    }
+    /** Tabla **/
+    
+    table.greyGridTable {
+        border: 2px solid #FFFFFF;
+        width: 100%;
+        text-align: center;
+        border-collapse: collapse;
+    }
+    
+    table.greyGridTable td,
+    table.greyGridTable th {
+        border: 1px solid #FFFFFF;
+        padding: 3px 4px;
+    }
+    
+    table.greyGridTable tbody td {
+        font-size: 13px;
+    }
+    
+    table.greyGridTable td:nth-child(even) {
+        background: #EBEBEB;
+    }
+    
+    table.greyGridTable thead {
+        background: #FFFFFF;
+        border-bottom: 4px solid #333333;
+    }
+    
+    table.greyGridTable thead th {
+        font-size: 15px;
+        font-weight: bold;
+        color: #333333;
+        text-align: center;
+    }
+    
+    table.greyGridTable tfoot td {
+        font-size: 14px;
+    }

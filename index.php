@@ -15,7 +15,7 @@
     <header class="site-header">
         <div class="contenedor">
             <div class="barra">
-                <a href="">
+                <a href="index.php">
                     <h1 class=no-margin>Arqueología<span>Cordobesa</span></h1>
                 </a>
                 <nav class="navegacion">
