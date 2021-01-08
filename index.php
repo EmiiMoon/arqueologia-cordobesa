@@ -19,8 +19,15 @@
                     <h1 class=no-margin>Arqueología<span>Cordobesa</span></h1>
                 </a>
                 <nav class="navegacion">
-                    <a href="admin.php">Filtrar</a>
-                    <a href="admin.php">Log In</a>
+                    <?php
+                        session_start();
+                        
+                        if(isset($_SESSION['user_id'])){
+                            echo '<a href="admin.php">Administrar</a>';
+                        } else {
+                            echo '<a href="admin.php">Iniciar Sesión</a>';
+                        }
+                    ?>
                 </nav>
             </div> <!-- Barra -->
         </div> <!-- Contenedor -->

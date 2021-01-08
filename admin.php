@@ -10,7 +10,16 @@
     <link rel="stylesheet" href="./css/styles.css">
 </head>
 <body>
-    
+
+    <?php
+        session_start();
+        
+        echo $_SESSION['coco'];
+        if(!isset($_SESSION['user_id'])){
+            header('Location: login.php');
+            exit;
+        }
+    ?>
     <!-- Conexión con la base de datos -->
     <?php
         try {
@@ -33,8 +42,7 @@
                     <h1 class=no-margin>Arqueología<span>Cordobesa</span></h1>
                 </a>
                 <nav class="navegacion">
-                    <a href="admin.php">Filtrar</a>
-                    <a href="admin.php">Log In</a>
+                    <a href="logout.php">Cerrar Sesión</a>
                 </nav>
             </div> <!-- Barra -->
         </div> <!-- Contenedor -->

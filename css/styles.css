@@ -71,6 +71,11 @@
     .no-margin {
         margin: 0;
     }
+    
+    .error-msg {
+        color: red;
+        text-align: center;
+    }
     /** Header **/
     
     @media (min-width: 768px) {

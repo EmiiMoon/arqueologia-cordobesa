@@ -18,31 +18,70 @@
                     <h1 class=no-margin>Arqueología<span>Cordobesa</span></h1>
                 </a>
                 <nav class="navegacion">
-                    <a href="admin.php">Filtrar</a>
-                    <a href="admin.php">Log In</a>
+                    
                 </nav>
             </div> <!-- Barra -->
         </div> <!-- Contenedor -->
     </header>
+
+    <?php
+ 
+        // Conexión con la BD
+        try {
+            require_once('db_connection.php');
+            $conn->query("SET NAMES 'utf8'");
+        } catch (\Exception $e) {
+            echo $e->getMessage();
+        }
+
+        session_start();
+        
+        if (isset($_POST['login'])) {
+            $username = $_POST['username'];
+            $password = $_POST['password'];
+
+            echo $_POST['username'];
+
+            $result = $conn->query("SELECT * FROM users WHERE username='$username'");
+            
+            if ($result->num_rows != 1) {
+                echo '<p class="error">Username password combination is wrong!</p>';
+            } else {
+
+                $user = $result->fetch_assoc();
+                
+                if (password_verify($password, $user['password'])) {
+                    $_SESSION['user_id'] = $user['id'];
+                    echo '<p class="success">Congratulations, you are logged in!</p>';
+                    header('Location: admin.php');
+                    exit;
+                } else {
+                    echo '<p class="error">Username password combination is wrong!</p>';
+                }
+            }
+        }
+    
+    ?>
+
 
     <main class="contenedor">
         <h3 class="centrar-texto">Iniciar Sesión</h3>
 
         <div class="formulario-bg"></div>
 
-        <form action="" class="formulario">
+        <form action="" class="formulario" method="post">
             <div class="campo">
-                <label class="campo__label" for="user">Usuario</label>
-                <input class="campo__field" type="text" placeholder="Usuario" id="user"> 
+                <label class="campo__label" for="username">Usuario</label>
+                <input class="campo__field" type="text" placeholder="Usuario" name="username"> 
             </div>
 
             <div class="campo">
                 <label class="campo__label" for="password">Contraseña</label>
-                <input class="campo__field" type="password" placeholder="Contraseña" id="password">
+                <input class="campo__field" type="password" placeholder="Contraseña" name="password">
             </div>
 
             <div class="campo">
-                <input type="submit" value="Aceptar" class="boton boton--primario">
+                <input type="submit" value="Aceptar" class="boton boton--primario" name="login">
                 <a href=index.php class="boton boton--secundario">Cancelar</a>
             </div>
         </form>
