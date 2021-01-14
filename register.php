@@ -42,17 +42,18 @@
         <form method="post" action="" class="formulario">
 
             <?php
-                // Conexión con la BD
-                try {
-                    require_once('db_connection.php');
-                    $conn->query("SET NAMES 'utf8'");
-                } catch (\Exception $e) {
-                    echo $e->getMessage();
-                }
 
                 // El condicional se ejecuta si hemos enviado el formulario con los datos
                 if (isset($_POST['register'])) {
-            
+                    
+                    // Conexión con la BD
+                    try {
+                        require_once('db_connection.php');
+                        $conn->query("SET NAMES 'utf8'");
+                    } catch (\Exception $e) {
+                        echo $e->getMessage();
+                    }
+
                     $username = $_POST['username'];
                     $password = $_POST['password'];
                     // Crea un hash de 60 caracteres y en un único sentido
@@ -73,7 +74,11 @@
                             echo '<p class="error-msg">[ERROR] No se pudo registrar al administrador.</p>';
                         }
                     }
+
+                    $conn->close();
                 }
+
+                
             ?>
 
             <div class="campo">

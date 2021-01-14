@@ -14,7 +14,6 @@
     <?php
         session_start();
         
-        echo $_SESSION['coco'];
         if(!isset($_SESSION['user_id'])){
             header('Location: login.php');
             exit;
@@ -32,6 +31,8 @@
 
         $sql = "SELECT * FROM markers";
         $result = $conn->query($sql);
+
+        $conn->close();
     ?>
 
     <!-- Se muestra la cabecera -->
@@ -47,35 +48,46 @@
             </div> <!-- Barra -->
         </div> <!-- Contenedor -->
     </header>
+    
+    <main class="contenedor">
 
-    <!-- Tabla de marcadores -->
-    <table class="greyGridTable">
-        <thead>
-            <tr>
-                <th>Nombre</th>
-                <th>Latitud</th>
-                <th>Longitud</th>
-                <th>Informaci&oacute;n</th>
-                <th>Editar</th>
-                <th>Eliminar</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
-                while ($row = $result->fetch_assoc()) {
-                    echo 
-                    "<tr>
-                        <td>".$row["name"]."</td>
-                        <td>".$row["lat"]."</td>
-                        <td>".$row["lng"]."</td>
-                        <td>".$row["info"]."</td>
-                        <td><a href=\"insert_form.php?x=2&id=".$row["id"]."\">Editar</a></td>
-                        <td><a href=\"admin.php?x=3&id=".$row["id"]."\">Eliminar</a></td>
-                    </tr>";
-                }
-            ?>
-        </tbody>
-    </table>
+    <h3 class="centrar-texto">Administrar Marcadores</h3>
+
+        <div class="formulario-bg"></div>
+
+        <div class="boton--admin">
+            <a href="insert_form.php" class="boton nuevo--marcador">Nuevo Marcador</a>
+        </div>
+
+        <!-- Tabla de marcadores -->
+        <table class="greyGridTable">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Latitud</th>
+                    <th>Longitud</th>
+                    <th>Informaci&oacute;n</th>
+                    <th>Editar</th>
+                    <th>Eliminar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                    while ($row = $result->fetch_assoc()) {
+                        echo 
+                        "<tr>
+                            <td>".$row["name"]."</td>
+                            <td>".$row["lat"]."</td>
+                            <td>".$row["lng"]."</td>
+                            <td>".$row["info"]."</td>
+                            <td><a href=\"update_form.php?id=".$row["id"]."\">Editar</a></td>
+                            <td><a href=\"db_edit.php?delete=1&id=".$row["id"]."\">Eliminar</a></td>
+                        </tr>";
+                    }
+                ?>
+            </tbody>
+        </table>
+    </main>
 
 </body>
 </html>

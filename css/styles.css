@@ -1,7 +1,7 @@
     /*El mapa se muestra dentro de un elemento "div", al cual se le ha asignado el ID "map".*/
     
     #map {
-        height: 85%;
+        height: 80%;
         width: 100%;
     }
     
@@ -56,7 +56,7 @@
     }
     
     h4 {
-        font-size: 2.8rem;
+        font-size: 1.8rem;
     }
     
     img {
@@ -92,7 +92,16 @@
         background-repeat: no-repeat;
         background-position: 90% 70%;
         background-size: cover;
-        height: 15%;
+        height: 20%;
+    }
+    
+    @media (min-width: 768px) {
+        .site-header {
+            height: 15%;
+        }
+        #map {
+            height: 85%;
+        }
     }
     
     .site-header a {
@@ -166,7 +175,12 @@
     }
     
     .campo__field--textarea {
+        height: 10rem;
+    }
+    
+    .ck-editor__editable {
         height: 20rem;
+        width: 40rem;
     }
     
     .boton {
@@ -181,6 +195,7 @@
         margin-bottom: 2rem;
         border: none;
         padding: 5px 10px;
+        text-decoration: none;
     }
     
     @media (min-width: 768px) {
@@ -195,12 +210,29 @@
     
     .boton--primario {
         background-color: black;
+        text-decoration: none;
     }
     
     .boton--secundario {
         margin-left: 1rem;
         background-color: #784D3C;
         text-decoration: none;
+    }
+    
+    .nuevo--marcador {
+        background-color: black;
+        text-decoration: none;
+        margin: 1rem;
+    }
+    
+    .boton--admin {
+        float: center;
+    }
+    
+    @media (min-width: 768px) {
+        .boton--admin {
+            float: right;
+        }
     }
     /** Tabla **/
     
@@ -222,7 +254,7 @@
     }
     
     table.greyGridTable td:nth-child(even) {
-        background: #EBEBEB;
+        background: rgba(177, 80, 42, 0.4);
     }
     
     table.greyGridTable thead {

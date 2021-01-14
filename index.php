@@ -1,3 +1,10 @@
+<!-- 
+    index.php
+    Página principal que se muestra de cara al usuario. Contiene un mapa de Google Maps centrado en Córdoba, en el cual se recogen
+    una serie de marcadores señalizando la ubicación de diversos yacimientos arqueológicos. Haciendo click en estos marcadores se
+    despliegan ventanas con información sobre los mismos.
+-->
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -11,14 +18,17 @@
 
 </head>
 <body>
+
     <!-- Se añade la cabecera -->
     <header class="site-header">
         <div class="contenedor">
             <div class="barra">
+                <!-- Título de la web, con enlace a la página principal -->
                 <a href="index.php">
                     <h1 class=no-margin>Arqueología<span>Cordobesa</span></h1>
                 </a>
                 <nav class="navegacion">
+                        <!-- Dependiendo de si se está logueado o no se muestra una opción u otra -->
                     <?php
                         session_start();
                         
@@ -29,19 +39,20 @@
                         }
                     ?>
                 </nav>
-            </div> <!-- Barra -->
-        </div> <!-- Contenedor -->
+            </div>
+        </div>
     </header>
+
+    <!-- Elemento div dentro del cual se va a mostrar el mapa -->
     <div id ='map'></div> 
     
     <!--Script que carga la librería de Google Maps.
-    	Enlace para la fase de desarrollo. Cuando se vaya a utilizar la aplicación de manera definitiva es necesario añadir un API key que vincule con nuestro proyecto de Google Cloud.
+    	El enlace contiene la API key que enlaza con el proyecto de Google Cloud
         callback=initMap se encarga de llamar a la función initMap() que definimos más abajo
         atributo async para que la página se muestre mientras que se carga el mapa-->
     <script src="https://maps.googleapis.com/maps/api/js?&callback=initMap" async defer></script>
-
+    
     <script>
-
         // Conexión con la base de datos. Se seleccionan todas las filas de la tabla marcadores.
         <?php
             try {
@@ -57,16 +68,18 @@
         // Array en el que se van a almacenar los marcadores.
         var markers = [];
 
-        // Se itera por cada fila de la tabla.
+        // El bucle recorre cada marcador, almacenando sus datos en un objeto "marker" que se añade al vector que hemos definido
+        // previamente
         <?php
             while ($row = $result->fetch_assoc()){
         ?>
                 // Objeto que contiene todos los atributos de un marcador.
                 var marker = {
-                    name: "<?php echo $row["name"];?>",
+                    name: `<?php echo $row["name"];?>`,
                     info: `<?php echo $row["info"];?>`,
                     lat: <?php echo $row["lat"];?>,
-                    lng: <?php echo $row["lng"];?>
+                    lng: <?php echo $row["lng"];?>,
+                    video: `<?php echo $row["video"];?>`
                 };
                 
                 // Se inserta el objeto marcador al final del array de marcadores.
@@ -84,7 +97,7 @@
             const map = new google.maps.Map(document.getElementById('map'), {
                 // Coordenadas del centro del mapa y nivel de zoom
                 center: {lat: 37.89155, lng:  -4.77275}, 
-                zoom: 13,
+                zoom: 12,
             });
 
             // Se itera por todos los elementos del vector de marcadores, añadiéndolos al mapa.
@@ -98,7 +111,8 @@
 
                 // Se declara una ventana de información. El contenido es un string con el HTML que se mostrará en la ventana.
                 const infowindow = new google.maps.InfoWindow({
-                    content: '<b>'+marker["name"]+'</b><p>'+marker["info"]+'</p>',
+                    content: '<b>'+marker["name"]+'</b><br>'+marker["info"]+'<br>'+marker["video"]+'',
+                        
                 });
 
                 // Añadimos al marcador un listener para que al hacer click se muestre la ventana que hemos declarado.

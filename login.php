@@ -25,27 +25,26 @@
     </header>
 
     <?php
- 
-        // Conexión con la BD
-        try {
-            require_once('db_connection.php');
-            $conn->query("SET NAMES 'utf8'");
-        } catch (\Exception $e) {
-            echo $e->getMessage();
-        }
 
         session_start();
         
         if (isset($_POST['login'])) {
+
+            // Conexión con la BD
+            try {
+                require_once('db_connection.php');
+                $conn->query("SET NAMES 'utf8'");
+            } catch (\Exception $e) {
+                echo $e->getMessage();
+            }
+
             $username = $_POST['username'];
             $password = $_POST['password'];
-
-            echo $_POST['username'];
 
             $result = $conn->query("SELECT * FROM users WHERE username='$username'");
             
             if ($result->num_rows != 1) {
-                echo '<p class="error">Username password combination is wrong!</p>';
+                echo '<p class="error-msg">ERROR: Combinación de usuario y contraseña incorrecta.</p>';
             } else {
 
                 $user = $result->fetch_assoc();
@@ -59,6 +58,8 @@
                     echo '<p class="error">Username password combination is wrong!</p>';
                 }
             }
+
+            $conn->close();
         }
     
     ?>
