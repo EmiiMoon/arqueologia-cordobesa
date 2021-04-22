@@ -5,11 +5,31 @@
         width: 100%;
     }
     
+    #map2 {
+        height: 25%;
+        width: 100%;
+        display: flex;
+
+        align: center;
+    }
+
+    @media (min-width: 768px) {
+        #map2 {
+            height: 50%;
+            width: 50%;
+            display: flex;
+
+            align: center;
+            margin-left: 25%;
+        }
+    }
+
     html,
     body {
         height: 100%;
         margin: 0;
         padding: 0;
+        /*background-color: rgba(177, 80, 42, 0.05)*/
     }
     
     html {
@@ -88,16 +108,17 @@
     
     .site-header {
         background-color: black;
-        background-image: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)), url(../img/cordoba.jpg);
+        background-image: linear-gradient( rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(../img/cordoba.jpg);
         background-repeat: no-repeat;
         background-position: 90% 70%;
         background-size: cover;
-        height: 20%;
+        height: 21%;
     }
     
     @media (min-width: 768px) {
         .site-header {
             height: 15%;
+            background-image: linear-gradient( rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(../img/cordoba.jpg);
         }
         #map {
             height: 85%;
@@ -156,7 +177,7 @@
             width: 40%;
         }
     }
-    
+
     .campo {
         margin-bottom: 2rem;
         display: flex;
@@ -171,7 +192,23 @@
     
     .campo__field {
         flex: 0.25;
-        border: 1px solid #e1e1e1;
+        border: 1px solid #e1e1e1;     
+           
+    }
+
+
+    .campo__label2 {
+        /*flex: 0 0 9rem;*/
+        text-align: center;
+        padding-right: 2rem;
+    }
+    
+    .campo__field2 {
+        /*flex: 0.25;*/
+        border: 1px solid #b1b1b1; 
+        width: 100%; 
+        height: 3.5rem; 
+           
     }
     
     .campo__field--textarea {
@@ -180,7 +217,7 @@
     
     .ck-editor__editable {
         height: 20rem;
-        width: 40rem;
+        width: 100%;
     }
     
     .boton {
@@ -253,8 +290,12 @@
         font-size: 13px;
     }
     
+    table.greyGridTable td:nth-child(odd) {
+        background: rgba(177, 80, 42, 0.1);
+    }
+
     table.greyGridTable td:nth-child(even) {
-        background: rgba(177, 80, 42, 0.4);
+        background: rgba(177, 80, 42, 0.2);
     }
     
     table.greyGridTable thead {
