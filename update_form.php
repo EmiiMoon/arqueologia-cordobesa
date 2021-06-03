@@ -9,7 +9,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arquelogía Cordobesa</title>
+    <title>Editar Sitio</title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=PT+Sans:wght@400;700&display=swap" 
           rel="stylesheet">
@@ -57,10 +57,17 @@
     <header class="site-header">
         <div class="contenedor">
             <div class="barra">
+                
+                <!-- Foto de Cristóbal, con enlace al canal de YouTube -->
+                <a class="foto" href="https://www.youtube.com/channel/UC9ggJ6dE24RkRcpZizYPDsw" target="_blank" >
+                    <img width="128.75" height="100%" src=img/cristobal.png>
+                </a>
+                
+                <!-- Título de la web, con enlace a la página principal -->
                 <a href="index.php">
-                    <!-- Título de la web, con enlace a la página principal -->
                     <h1 class=no-margin>Arqueología<span>Cordobesa</span></h1>
                 </a>
+
                 <nav class="navegacion">
                     <!-- Opción para ir a la página de administración -->
                     <a href="admin.php">                  
@@ -155,6 +162,7 @@
                 // Coordenadas del centro del mapa y nivel de zoom
                 center: {lat: <?php echo $marker['lat'];?>, lng:  <?php echo $marker['lng'];?>}, 
                 zoom: 12,
+                streetViewControl: false
             
             });
 
@@ -214,7 +222,7 @@
 
     </script>
 
-    <script src="jquery-1.12.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
 
 </body>
 </html>

@@ -1,7 +1,8 @@
 <!-- 
     admin.php
-    En esta página se muestra una tabla que contiene información sobre todos los marcadores almacenados en la BD,
-    permitiendo editar y eliminar cualquiera de ellos, así como crear uno completamente nuevo.
+    En esta página se muestra una tabla que contiene información sobre 
+    todos los marcadores almacenados en la BD, permitiendo editar y 
+    eliminar cualquiera de ellos, así como crear uno completamente nuevo.
 -->
 
 <!DOCTYPE html>
@@ -10,7 +11,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Administrar Marcadores</title>
+    <title>Administrar Sitios</title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=PT+Sans:wght@400;700&display=swap" 
           rel="stylesheet">
@@ -20,8 +21,8 @@
 
 <body>
 
-    <!-- Se comprueba que previamente se haya establecido la sesión, en caso contrario se redirecciona a la 
-    página de login -->
+    <!-- Se comprueba que previamente se haya establecido la sesión, en
+         caso contrario se redirecciona a la página de login -->
     <?php
         session_start();
         
@@ -53,13 +54,30 @@
     <header class="site-header">
         <div class="contenedor">
             <div class="barra">
-                <a href="index.php">
-                    <!-- Título de la web, con enlace a la página principal -->
-                    <h1 class=no-margin>Arqueología<span>Cordobesa</span></h1>
+
+                <!-- Imagen con enlace a canal de YouTube -->
+                <a class="foto" 
+                   href="https://www.youtube.com/channel/UC9ggJ6dE24RkRcpZizYPDsw" 
+                   target="_blank" >
+                        
+                        <img width="128.75" 
+                             height="100%" 
+                             src=img/cristobal.png>
+
                 </a>
+
+                <!-- Título de la web, con enlace a la página principal -->
+                <a href="index.php">
+                    <h1 class=no-margin>
+                        Arqueología<span>Cordobesa</span>
+                    </h1>
+                </a>
+
                 <nav class="navegacion">
+
                     <!-- Enlace a la página de logout -->
                     <a href="logout.php">Cerrar Sesión</a>
+
                 </nav>
             </div> 
         </div> 
@@ -74,7 +92,9 @@
 
         <!-- Botón para añadir un nuevo sitio -->
         <div class="boton--admin">
-            <a href="insert_form.php" class="boton nuevo--marcador">Nuevo Sitio</a>
+            <a href="insert_form.php" class="boton nuevo--marcador">
+                Nuevo Sitio
+            </a>
         </div>
 
         <!-- Tabla de marcadores -->
@@ -84,9 +104,6 @@
             <thead>
                 <tr>
                     <th>Nombre</th>
-                    <!--th>Latitud</th-->
-                    <!--th>Longitud</th-->
-                    <!--<th>Informaci&oacute;n</th>-->
                     <th>Editar</th>
                     <th>Eliminar</th>
                 </tr>
@@ -95,19 +112,31 @@
             <!-- Cuerpo de la tabla -->
             <tbody>
                 <?php
-                    // Se recorren los marcadores, imprimiendo cada uno como una nueva fila de la tabla, de forma
-                    // que cada atributo sea una columna diferente.
-                    // También se añaden enlaces que permiten editar o eliminar el marcador.
+                    // Se recorren los marcadores, imprimiendo cada uno 
+                    // como una nueva fila de la tabla, de forma que cada
+                    // atributo sea una columna diferente.
+                    // También se añaden enlaces que permiten editar o 
+                    // eliminar el marcador.
                     while ($row = $result->fetch_assoc()) {
+                        
                         echo 
                         "<tr>
-                            <td>".$row["name"]."</td>
-                            <td><a href=\"update_form.php?id=".$row["id"]."\">Editar</a></td>
-                            <td><a href=\"db_edit.php?delete=1&id=".$row["id"]."\">Eliminar</a></td>
+                        
+                        <td>".$row["name"]."</td>
+
+                        <td>
+                        <a href=\"update_form.php?id=".$row["id"]."\">
+                            Editar
+                        </a>
+                        </td>
+
+                        <td>
+                        <a href=\"db_edit.php?delete=1&id=".$row["id"]."\">
+                            Eliminar
+                        </a>
+                        </td>
+
                         </tr>"; 
-                        // <td>".$row["lat"]."</td>
-                        // <td>".$row["lng"]."</td>
-                        // <td>".$row["info"]."</td>
                     }
                 ?>
             </tbody>
